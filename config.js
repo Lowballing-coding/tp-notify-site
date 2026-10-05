@@ -10,7 +10,7 @@ window.TP = {
   supabaseUrl: "https://ddeapflekaecxqetayil.supabase.co",
   supabaseKey: "sb_publishable_3Y_Na0OOoVnveCA6iBgwtg_3xnII6fu",
   // Cloudflare Turnstile SITE key (public). Empty = no spam check yet. Must match the app's TURNSTILE_SITE_KEY.
-  turnstileSiteKey: "",
+  turnstileSiteKey: "0x4AAAAAAFOxe4Sm4jFD1ucJ",
   // Cloudflare Web Analytics token (public, cookieless). Empty = no analytics.
-  analyticsToken: "",
+  analyticsToken: "9a300d8ecc6343d4bb8def311b3ee574",
 };
