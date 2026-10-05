@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://ddeapflekaecxqetayil.supabase.co https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; base-uri 'self'; form-action 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create Your Account | TP Notify</title>
+<meta name="description" content="Create your TP Notify account: start a free month, or choose a plan for instant alerts.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#faf9f5">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to Content</a>
+<header class="top">
+<div class="wrap">
+<a class="brand" href="./">
+<svg viewBox="96 96 320 320" aria-hidden="true"><path d="M399 210.7A150 150 0 1 1 301.4 113" fill="none" stroke="#cc785c" stroke-width="34" stroke-linecap="round"/><circle cx="362.1" cy="149.9" r="36" fill="#2f8a47"/><path d="M256 256L326.7 185.3" stroke="currentColor" stroke-width="26" stroke-linecap="round"/><circle cx="256" cy="256" r="22" fill="#cc785c"/></svg>
+<span>TP Notify</span>
+</a>
+<a class="btn small outline" href="./#pricing">Back to Pricing</a>
+</div>
+</header>
+
+<main id="main" class="narrow">
+<h1 id="title">Create Your Account</h1>
+<p class="lead" id="lead">Then pay securely with Stripe. Your account is approved automatically as soon as the payment goes through.</p>
+
+<div class="plan-pick" role="group" aria-label="Plan">
+<button type="button" class="plan-opt" data-plan="monthly" aria-pressed="true"><b>Monthly</b><span>£3.99 first month, then £4.99 a month</span></button>
+<button type="button" class="plan-opt" data-plan="free" aria-pressed="false"><b>Free Month</b><span>No card. Tickets on Sale alerts arrive 30 minutes late.</span></button>
+<button type="button" class="plan-opt" data-plan="quarterly" aria-pressed="false"><b>3 Months</b><span>£11.99 every 3 months</span></button>
+</div>
+
+<form id="form" class="form" novalidate>
+<div class="field" id="f-name">
+<label for="name">Your Name</label>
+<input id="name" type="text" autocomplete="name" maxlength="60" required>
+</div>
+<div class="field">
+<label for="email">Email</label>
+<input id="email" type="email" autocomplete="email" required>
+<p class="hint">Use an email you can get to. It's how we match your payment to you.</p>
+</div>
+<div class="field">
+<label for="pass">Password</label>
+<input id="pass" type="password" autocomplete="new-password" minlength="8" required aria-describedby="meter-label">
+<div class="meter" id="meter" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<p class="hint" id="meter-label" aria-live="polite">At least 8 characters. A longer mix of words, numbers and symbols is stronger.</p>
+</div>
+<div class="field" id="f-confirm">
+<label for="confirm">Confirm Password</label>
+<input id="confirm" type="password" autocomplete="new-password" required>
+</div>
+<label class="agree" id="f-agree"><input id="agree" type="checkbox" required> <span>I agree to the <a href="terms.html" target="_blank">Terms</a> and the <a href="privacy.html" target="_blank">Privacy Policy</a>.</span></label>
+<div id="captcha" class="captcha"></div>
+<p id="msg" class="form-msg" role="alert"></p>
+<button id="submit" class="btn block" type="submit">Create Account and Continue to Payment</button>
+</form>
+<button id="toggle" class="btn outline block" type="button" style="margin-top: 12px">I Already Have an Account</button>
+<p class="note">Got free access from the owner? You don't need to pay. Sign in to the app instead.</p>
+</main>
+
+<footer class="foot">
+<div class="wrap">
+<div class="about">
+<a class="brand" href="./"><svg viewBox="96 96 320 320" aria-hidden="true"><path d="M399 210.7A150 150 0 1 1 301.4 113" fill="none" stroke="#cc785c" stroke-width="34" stroke-linecap="round"/><circle cx="362.1" cy="149.9" r="36" fill="#5db872"/><path d="M256 256L326.7 185.3" stroke="currentColor" stroke-width="26" stroke-linecap="round"/><circle cx="256" cy="256" r="22" fill="#cc785c"/></svg><span>TP Notify</span></a>
+<p>TP Notify is an independent alert service run by Peter Ellul, 51 New North Street, Exeter, EX4 4EP. It is not affiliated with, or endorsed by, Timepiece or FIXR. It only sends alerts and never buys tickets.</p>
+</div>
+<nav aria-label="Legal">
+<a href="terms.html">Terms</a>
+<a href="privacy.html">Privacy</a>
+<a href="refunds.html">Refunds</a>
+<a href="mailto:TPNotify@outlook.com">TPNotify@outlook.com</a>
+</nav>
+</div>
+</footer>
+
+<script src="config.js"></script>
+<script src="site.js"></script>
+<script src="signup.js"></script>
+</body>
+</html>

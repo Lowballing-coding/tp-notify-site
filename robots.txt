@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /tp-notify-site/success.html
+Sitemap: https://lowballing-coding.github.io/tp-notify-site/sitemap.xml
