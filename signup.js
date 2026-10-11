@@ -124,7 +124,7 @@
     var link = plan === "quarterly" ? c.payQuarterly : c.payMonthly;
     if (!link) { say("Your account is ready. Payments aren't open yet, so we'll be in touch soon.", true); return; }
     location.href = link + (link.indexOf("?") < 0 ? "?" : "&") + "client_reference_id=" + encodeURIComponent(userId) +
-      "&prefilled_email=" + encodeURIComponent(email) +
+      "&locked_prefilled_email=" + encodeURIComponent(email) +
       (plan === "monthly" && c.promoMonthly ? "&prefilled_promo_code=" + encodeURIComponent(c.promoMonthly) : "");
   }
 
