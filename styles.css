@@ -202,3 +202,10 @@ footer.foot nav a:hover { color: var(--bandtext); opacity: 1; }
 .doc th, .doc td { text-align: left; vertical-align: top; padding: 12px 14px; border: 1px solid var(--line); }
 .doc th { background: var(--card); font-weight: 600; color: var(--text); }
 .doc .scroll { overflow-x: auto; }
+
+/* Get the App: phones see a button, computers see a QR code (site.js sets the class). Without JS, both show. */
+.on-phone .computer-only, .on-computer .phone-only { display: none !important; }
+.get-app { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-top: 28px; }
+.get-app img { width: 168px; height: 168px; border-radius: 8px; border: 1px solid var(--line2); }
+.get-app .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.get-app p { max-width: 320px; color: var(--body); }
