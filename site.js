@@ -3,8 +3,12 @@
   // Never show the site inside someone else's page (stops click-tricking; GitHub Pages can't send the header that does this).
   if (window.top !== window.self) { try { window.top.location = window.location.href; } catch (e) { document.documentElement.hidden = true; } }
   var c = window.TP || {};
+  // Phones get a "Get TP Notify" button; computers get a QR code to scan with their phone (styles.css hides the other).
+  var ua = navigator.userAgent;
+  var phone = /iPhone|iPad|iPod|Android/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  document.documentElement.className += phone ? " on-phone" : " on-computer";
   var open = document.getElementById("open-app");
-  if (open && c.appUrl) open.href = c.appUrl;
+  if (c.appUrl) [].forEach.call(document.querySelectorAll("#open-app, .app-link"), function (a) { a.href = c.appUrl; });
   // The welcome page doubles as the "free month started" page.
   if (open && /[?&]free=1\b/.test(location.search)) {
     document.title = "Free Month Started | TP Notify";
