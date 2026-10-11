@@ -6,9 +6,13 @@
   var asked = new URLSearchParams(location.search).get("plan");
   var plan = asked === "quarterly" || asked === "free" ? asked : "monthly";
   var signIn = false, captchaToken = null, widget = null;
+  var ref = null;   // a friend's invite code, saved by site.js from an invite link
+  try { ref = JSON.parse(localStorage.getItem("tp-ref")); } catch (e) {}
+  if (!/^[0-9A-F]{6}$/.test(ref || "")) ref = null;
 
   // ---- Plan choice ----
   function showPlan() {
+    $("invited").hidden = signIn || !ref || plan !== "free";   // the extra week is on the free month
     document.querySelectorAll(".plan-opt").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.plan === plan)); });
     if (signIn) return;
     $("submit").textContent = plan === "free" ? "Create Account and Start Free Month" : "Create Account and Continue to Payment";
@@ -141,12 +145,13 @@
     btn.disabled = true; btn.textContent = signIn ? "Signing In..." : "Creating Your Account..."; say("");
     var security = captchaToken ? { captcha_token: captchaToken } : undefined;
     var body = { email: email, password: pw, gotrue_meta_security: security };
-    if (!signIn) body.data = { name: name };
+    if (!signIn) body.data = ref ? { name: name, ref: ref } : { name: name };
 
     call("POST", signIn ? "/auth/v1/token?grant_type=password" : "/auth/v1/signup", body)
       .then(function (j) {
         var user = (j && j.user) || j, token = j && j.access_token;
         if (!user || !user.id) throw new Error("Something went wrong. Please try again, or email TPNotify@outlook.com if it keeps happening.");
+        if (!signIn) { try { localStorage.removeItem("tp-ref"); } catch (e) {} }   // the invite is used up
         if (!token) return goPay(user.id, email);   // email confirmation is on: no session yet, the id is enough to pay
         var steps = [];
         if (!signIn) steps.push(call("PATCH", "/rest/v1/profiles?id=eq." + user.id, { display_name: name }, token).catch(function () {}));
