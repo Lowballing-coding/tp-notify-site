@@ -45,6 +45,7 @@
 <main id="main">
 <section class="wrap hero">
 <div class="copy">
+<p class="invited" id="invited-home" hidden>A friend invited you, so your free month comes with an extra week. No card needed.</p>
 <div class="eyebrow">Ticket alerts for Timepiece events</div>
 <h1>Know the moment tickets go on sale.</h1>
 <p class="lead">TP Notify checks the Timepiece listing on FIXR about once a minute, day and night, and sends a push alert to your phone the moment an event is listed as on sale.</p>
@@ -136,7 +137,7 @@
 <a class="btn block" href="signup.html?plan=quarterly">Start 3 Months</a>
 </div>
 </div>
-<p class="free-line">Not sure yet? <a href="signup.html?plan=free">Start a free month</a>. No card needed. Tickets on Sale alerts arrive 30 minutes late during it, and everything else arrives instantly. After the month, alerts stop until you choose a plan.</p>
+<p class="free-line">Not sure yet? <a href="signup.html?plan=free">Start a free month</a>. No card needed. Your first Tickets on Sale alert arrives instantly, later ones 30 minutes late, and everything else instantly. After the month, alerts stop until you choose a plan.</p>
 <p class="fine">Prices in GBP. Payment is handled securely by Stripe; your card details never reach TP Notify. See the <a href="refunds.html" style="color: inherit">Refund Policy</a>.</p>
 </div>
 </section>
@@ -144,7 +145,7 @@
 <section id="faq" class="faq">
 <h2>Questions</h2>
 <div class="list">
-<div class="qa"><h3>Is There a Free Version?</h3><p>Every new account gets a free month, with no card needed. During it, Tickets on Sale alerts reach you 30 minutes late, and On Sale Soon and Check Manually alerts arrive instantly. After the month, alerts stop until you choose a plan. Paid plans get every alert the moment it happens.</p></div>
+<div class="qa"><h3>Is There a Free Version?</h3><p>Every new account gets a free month, with no card needed. During it, your first Tickets on Sale alert arrives instantly and later ones reach you 30 minutes late. On Sale Soon and Check Manually alerts arrive instantly. If a night sells out before your late alert is due, we tell you so instead. After the month, alerts stop until you choose a plan. Paid plans get every alert the moment it happens.</p></div>
 <div class="qa"><h3>Do You Sell Tickets?</h3><p>No. TP Notify only sends alerts. You buy your tickets yourself on FIXR.</p></div>
 <div class="qa"><h3>Are You Affiliated With Timepiece or FIXR?</h3><p>No. TP Notify is an independent service and is not affiliated with, or endorsed by, Timepiece or FIXR.</p></div>
 <div class="qa"><h3>Will I Always Get the Alert Instantly?</h3><p>TP Notify checks about once a minute and sends an alert as soon as FIXR lists an event as on sale. It depends on FIXR's listing and on your phone's connection, so we can't guarantee you'll get a ticket, or that every alert arrives.</p></div>
@@ -159,6 +160,7 @@
 <h2>Don't Find Out After It Sells Out</h2>
 <p>Get the alert while tickets are still there to buy.</p>
 <p class="stat" id="sold-stat" hidden></p>
+<ul class="recent" id="recent" hidden></ul>
 <a class="btn light" href="signup.html?plan=free">Start Your Free Month</a>
 </div>
 </section>
