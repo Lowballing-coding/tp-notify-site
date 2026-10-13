@@ -209,3 +209,6 @@ footer.foot nav a:hover { color: var(--bandtext); opacity: 1; }
 .get-app img { width: 168px; height: 168px; border-radius: 8px; border: 1px solid var(--line2); }
 .get-app .cta { display: flex; flex-wrap: wrap; gap: 12px; }
 .get-app p { max-width: 320px; color: var(--body); }
+.hero .invited { margin: 0 0 16px; }
+.cta-band .recent { list-style: none; margin: 14px auto 0; padding: 0; max-width: 520px; font-size: .9375rem; opacity: .9; }
+.cta-band .recent li + li { margin-top: 4px; }

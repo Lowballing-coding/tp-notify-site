@@ -13,15 +13,17 @@
   if (open && /[?&]free=1\b/.test(location.search)) {
     document.title = "Free Month Started | TP Notify";
     document.querySelector("h1").textContent = "Your Free Month Has Started.";
-    document.querySelector(".lead").textContent = "For the next month, Tickets on Sale alerts reach you 30 minutes late and everything else " +
-      "arrives instantly. Upgrade any time in the app for instant alerts. Now set up the app on your phone.";
+    document.querySelector(".lead").textContent = "For the next month, your first Tickets on Sale alert arrives instantly, later ones 30 minutes late, and " +
+      "everything else instantly. Upgrade any time in the app for instant alerts. Now set up the app on your phone.";
   }
   // A friend's invite link (?ref=CODE): keep the code until sign-up. The app reads the same key (same web address).
   var ref = (new URLSearchParams(location.search).get("ref") || "").trim().toUpperCase();
   if (/^[0-9A-F]{6}$/.test(ref)) { try { localStorage.setItem("tp-ref", JSON.stringify(ref)); } catch (e) {} }
+  var invited = document.getElementById("invited-home");
+  try { if (invited && /^"[0-9A-F]{6}"$/.test(localStorage.getItem("tp-ref") || "")) invited.hidden = false; } catch (e) {}
 
   // Home page: "Live: checked FIXR 20 seconds ago" and how fast recent events sold out. Hidden if the checker is down.
-  var live = document.getElementById("live"), stat = document.getElementById("sold-stat"), last = null;
+  var live = document.getElementById("live"), stat = document.getElementById("sold-stat"), recent = document.getElementById("recent"), last = null;
   function span(min) {
     if (min < 1.5) return "a minute";
     if (min < 90) return Math.round(min) + " minutes";
@@ -46,6 +48,16 @@
         if (j.sold_out_events >= 3 && j.median_minutes != null) {
           stat.textContent = "Of the recent Timepiece events that sold out, half went within " + span(j.median_minutes) + " of going on sale.";
           stat.hidden = false;
+        }
+        // The last few nights, as proof: "Saturday 17.10 sold out within 11 minutes."
+        if (recent && j.recent && j.recent.length && recent.hidden) {
+          j.recent.forEach(function (e) {
+            if (!e.name || !(e.minutes > 0)) return;
+            var li = document.createElement("li");
+            li.textContent = e.name + " sold out within " + span(e.minutes) + " of going on sale.";
+            recent.appendChild(li);
+          });
+          recent.hidden = !recent.children.length;
         }
       })
       .catch(function () {});
