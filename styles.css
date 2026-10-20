@@ -18,10 +18,6 @@ h2 { font-size: clamp(2.25rem, 5vw, 3.25rem); line-height: .95; }
 .skip { position: absolute; left: -9999px; top: 8px; background: var(--ink); color: var(--night); padding: 10px 16px; border-radius: var(--radius-md); z-index: 10; }
 .skip:focus { left: 8px; }
 
-/* Logo: the ring and hub take the brand colour, the hand follows the text colour. */
-.lg-ring { stroke: var(--signal-ink); }
-.lg-hub { fill: var(--signal-ink); }
-.lg-dot { fill: var(--signal); }
 
 /* Buttons: lime primary, outline secondary. 44px+ tap targets. */
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 var(--space-8); border-radius: var(--radius-md); border: 1px solid transparent;
