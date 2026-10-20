@@ -1,0 +1,123 @@
+/* TP Notify "Night out" design tokens, copied from the TP Notify UI kit (tokens.css). Re-copy it if the kit changes.
+   Dark by default; pages set data-theme="auto" on <html> so the site follows the phone's light or dark setting. */
+
+:root, [data-theme="dark"] {
+  --night: #0c0c0e;
+  --night-raised: #16161a;
+  --night-high: #212127;
+  --line: #2e2e36;
+  --line-strong: #6a6a76;
+  --ink: #f4f2ec;
+  --ink-muted: #a3a19b;
+  --signal: #c8ff2e;
+  --on-signal: #0c0c0e;
+  --signal-ink: #c8ff2e;
+  --signal-soft: #1f2a06;
+  --action: #c8ff2e;
+  --on-action: #0c0c0e;
+  --uv: #9580ff;
+  --on-uv: #0c0c0e;
+  --uv-ink: #a99aff;
+  --uv-soft: #1f1a3d;
+  --danger: #ff6b5e;
+  --on-danger: #0c0c0e;
+  --danger-ink: #ff8075;
+  --danger-soft: #3a1411;
+  --focus: #c8ff2e;
+  --link: var(--signal-ink);
+  --shadow-none: none;
+  --shadow-glow: 0 0 0 1px #c8ff2e40, 0 12px 40px #c8ff2e1f;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --night: #f6f5f0;
+  --night-raised: #ffffff;
+  --night-high: #ecebe5;
+  --line: #dcdad2;
+  --line-strong: #8a877d;
+  --ink: #0c0c0e;
+  --ink-muted: #5d5b55;
+  --signal: #c8ff2e;
+  --on-signal: #0c0c0e;
+  --signal-ink: #3b5700;
+  --signal-soft: #eaf8c4;
+  --action: #0c0c0e;
+  --on-action: #c8ff2e;
+  --uv: #5b3fe0;
+  --on-uv: #ffffff;
+  --uv-ink: #4a2fd0;
+  --uv-soft: #ebe7ff;
+  --danger: #c8241a;
+  --on-danger: #ffffff;
+  --danger-ink: #b3201a;
+  --danger-soft: #fde8e5;
+  --focus: #5b3fe0;
+  --link: var(--signal-ink);
+  --shadow-none: none;
+  --shadow-glow: 0 1px 2px #0c0c0e14, 0 12px 32px #0c0c0e1a;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  [data-theme="auto"] {
+    --night: #f6f5f0;
+    --night-raised: #ffffff;
+    --night-high: #ecebe5;
+    --line: #dcdad2;
+    --line-strong: #8a877d;
+    --ink: #0c0c0e;
+    --ink-muted: #5d5b55;
+    --signal: #c8ff2e;
+    --on-signal: #0c0c0e;
+    --signal-ink: #3b5700;
+    --signal-soft: #eaf8c4;
+    --action: #0c0c0e;
+    --on-action: #c8ff2e;
+    --uv: #5b3fe0;
+    --on-uv: #ffffff;
+    --uv-ink: #4a2fd0;
+    --uv-soft: #ebe7ff;
+    --danger: #c8241a;
+    --on-danger: #ffffff;
+    --danger-ink: #b3201a;
+    --danger-soft: #fde8e5;
+    --focus: #5b3fe0;
+    --link: var(--signal-ink);
+    --shadow-none: none;
+    --shadow-glow: 0 1px 2px #0c0c0e14, 0 12px 32px #0c0c0e1a;
+    color-scheme: light;
+  }
+}
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --notch: 10px;
+  --font-display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+  --font-sans: "Schibsted Grotesk", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+/* Type styles */
+.tp-type-display-xl { font-family: var(--font-display); font-size: 96px; line-height: 0.9; font-weight: 800; letter-spacing: 0.01em; text-transform: uppercase; }
+.tp-type-display-l { font-family: var(--font-display); font-size: 64px; line-height: 0.92; font-weight: 800; letter-spacing: 0.01em; text-transform: uppercase; }
+.tp-type-display-m { font-family: var(--font-display); font-size: 40px; line-height: 0.95; font-weight: 800; letter-spacing: 0.01em; text-transform: uppercase; }
+.tp-type-display-s { font-family: var(--font-display); font-size: 28px; line-height: 1; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; }
+.tp-type-title { font-family: var(--font-sans); font-size: 20px; line-height: 26px; font-weight: 600; }
+.tp-type-body-l { font-family: var(--font-sans); font-size: 18px; line-height: 28px; font-weight: 400; }
+.tp-type-body { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 400; }
+.tp-type-label { font-family: var(--font-sans); font-size: 15px; line-height: 20px; font-weight: 600; }
+.tp-type-caption { font-family: var(--font-sans); font-size: 13px; line-height: 18px; font-weight: 400; }
+.tp-type-data { font-family: var(--font-mono); font-size: 13px; line-height: 18px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+.tp-type-pill { font-family: var(--font-mono); font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
