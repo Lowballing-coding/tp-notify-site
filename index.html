@@ -6,14 +6,14 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TP Notify: Ticket Alerts for Timepiece Events</title>
-<meta name="description" content="TP Notify sends a push alert to your phone the moment a Timepiece event is listed as on sale on FIXR. From £3.99 for your first month.">
+<meta name="description" content="TP Notify sends a push alert to your phone the moment a Timepiece event is listed as on sale on FIXR. Free for a month, then a Term Pass from £9.99.">
 <meta name="theme-color" content="#0c0916" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f6f3fb" media="(prefers-color-scheme: light)">
 <link rel="canonical" href="https://lowballing-coding.github.io/tp-notify-site/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TP Notify">
 <meta property="og:title" content="TP Notify: Know the Moment Tickets Go on Sale">
-<meta property="og:description" content="Push alerts to your phone the moment a Timepiece event is listed as on sale on FIXR. From £3.99 for your first month.">
+<meta property="og:description" content="Push alerts to your phone the moment a Timepiece event is listed as on sale on FIXR. Free for a month, then a Term Pass from £9.99.">
 <meta property="og:url" content="https://lowballing-coding.github.io/tp-notify-site/">
 <meta property="og:image" content="https://lowballing-coding.github.io/tp-notify-site/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -50,12 +50,13 @@
 <p class="invited" id="invited-home" hidden>A friend invited you, so your free month comes with an extra week. No card needed.</p>
 <div class="eyebrow">Ticket alerts for Timepiece events</div>
 <h1>Know the moment tickets go on sale.</h1>
+<p class="proof" id="hero-proof" hidden></p>
 <p class="lead">TP Notify checks the Timepiece listing on FIXR about once a minute, day and night, and sends a push alert to your phone the moment an event is listed as on sale.</p>
 <div class="cta">
 <a class="btn" href="signup.html?plan=free">Start Your Free Month</a>
 <a class="btn outline" href="#pricing">See Pricing</a>
 </div>
-<p class="fine">Free for a month with no card needed. Instant alerts cost £3.99 for your first paid month, then £4.99. Cancel anytime.</p>
+<p class="fine">Free for a month with no card needed. After that, a Term Pass is £11.99 for every alert until 26 March, with nothing to cancel.</p>
 <p class="live" id="live" hidden></p>
 </div>
 
@@ -127,25 +128,34 @@
 
 <section id="pricing" class="band dark">
 <div class="wrap">
-<h2>Simple Pricing</h2>
-<p class="lede">Two ways to pay. Cancel anytime. Your access switches on automatically once your payment goes through.</p>
+<h2>Pick Your Pass</h2>
+<p class="lede">Pay once for the term, or the whole year. Nothing renews, so there's nothing to cancel. Your access switches on as soon as your payment goes through.</p>
+<p class="proof" id="price-proof" hidden></p>
 <div class="plans">
 <div class="plan">
-<h3>Monthly</h3>
-<div class="price"><b>£3.99</b><span>for your first month</span></div>
-<div class="sub">then £4.99 a month</div>
-<ul><li>Every alert type</li><li>iPhone and Android</li><li>Cancel anytime</li></ul>
-<a class="btn outline block" href="signup.html?plan=monthly">Start Monthly</a>
+<h3>Year Pass</h3>
+<div class="price"><b>£24.99</b><span>once</span></div>
+<div class="sub">Every alert from today until 11 June 2027, through Spring and Summer terms.</div>
+<ul><li>Lasts the rest of the academic year</li><li>Every alert, the moment it happens</li><li>Nothing renews</li></ul>
+<a class="btn outline block" href="signup.html?plan=year">Get the Year Pass</a>
 </div>
 <div class="plan best">
-<div class="head"><h3>3 Months</h3><span class="tag">Best Value</span></div>
-<div class="price"><b>£11.99</b><span>every 3 months</span></div>
-<div class="sub">About £4 a month. Save £2.98 compared with Monthly.</div>
-<ul><li>Every alert type</li><li>iPhone and Android</li><li>Cancel anytime</li></ul>
-<a class="btn block" href="signup.html?plan=quarterly">Start 3 Months</a>
+<div class="head"><h3>Term Pass</h3><span class="tag">Best for One Term</span></div>
+<div class="price"><b class="early-price" data-until="2026-12-11T23:59:59Z" data-late="£11.99">£9.99</b><span>once</span></div>
+<div class="sub early-note" data-until="2026-12-11T23:59:59Z">Early-bird price until 11 December, then £11.99.</div>
+<div class="sub">Every alert from today until 26 March 2027. Costs less than three months of Monthly.</div>
+<ul><li>Starts today, runs to the end of Spring term</li><li>Every alert, the moment it happens</li><li>Nothing renews</li></ul>
+<a class="btn block" href="signup.html?plan=term">Get the Term Pass</a>
+</div>
+<div class="plan">
+<h3>Monthly</h3>
+<div class="price"><b>£3.99</b><span>first month</span></div>
+<div class="sub">Then £4.99 a month until you cancel.</div>
+<ul><li>Every alert, the moment it happens</li><li>Renews monthly</li><li>Cancel anytime in the app</li></ul>
+<a class="btn outline block" href="signup.html?plan=monthly">Start Monthly</a>
 </div>
 </div>
-<p class="free-line">Not sure yet? <a href="signup.html?plan=free">Start a free month</a>. No card needed. Your first Tickets on Sale alert arrives instantly, later ones 30 minutes late, and everything else instantly. After the month, alerts stop until you choose a plan.</p>
+<p class="free-line">Not sure yet? <a href="signup.html?plan=free">Start a free month</a>. No card needed. Your first Tickets on Sale alert arrives instantly, later ones 30 minutes late, and everything else instantly. After the month, alerts stop until you choose a pass.</p>
 <p class="fine">Prices in GBP. Payment is handled securely by Stripe; your card details never reach TP Notify. See the <a href="refunds.html" style="color: inherit">Refund Policy</a>.</p>
 </div>
 </section>
@@ -154,11 +164,12 @@
 <h2>Questions</h2>
 <div class="list">
 <div class="qa"><h3>Is There a Free Version?</h3><p>Every new account gets a free month, with no card needed. During it, your first Tickets on Sale alert arrives instantly and later ones reach you 30 minutes late. On Sale Soon and Check Manually alerts arrive instantly. If a night sells out before your late alert is due, we tell you so instead. After the month, alerts stop until you choose a plan. Paid plans get every alert the moment it happens.</p></div>
+<div class="qa"><h3>What Is a Term Pass?</h3><p>One payment that gives you every alert from the day you buy it until the last day of term (26 March 2027 for Spring). It doesn't renew, so there's nothing to remember to cancel. The Year Pass works the same way and lasts until 11 June 2027. Monthly renews every month until you cancel.</p></div>
 <div class="qa"><h3>Do You Sell Tickets?</h3><p>No. TP Notify only sends alerts. You buy your tickets yourself on FIXR.</p></div>
 <div class="qa"><h3>Are You Affiliated With Timepiece or FIXR?</h3><p>No. TP Notify is an independent service and is not affiliated with, or endorsed by, Timepiece or FIXR.</p></div>
 <div class="qa"><h3>Will I Always Get the Alert Instantly?</h3><p>TP Notify checks about once a minute and sends an alert as soon as FIXR lists an event as on sale. It depends on FIXR's listing and on your phone's connection, so we can't guarantee you'll get a ticket, or that every alert arrives.</p></div>
 <div class="qa"><h3>What Phone Do I Need?</h3><p>An iPhone on iOS 16.4 or newer, or an Android phone. On iPhone you add the app to your Home Screen first, as notifications only work from there. You can also use it on a computer in Chrome or Edge.</p></div>
-<div class="qa"><h3>How Do I Cancel, and Can I Get a Refund?</h3><p>You can cancel anytime from Settings in the app and keep access until the end of the period you've paid for. If you cancel within 14 days of your first payment, you get a refund minus the days you used. See the <a href="refunds.html">Refund Policy</a> for the details.</p></div>
+<div class="qa"><h3>How Do I Cancel, and Can I Get a Refund?</h3><p>Passes don't renew, so there's nothing to cancel. Monthly can be cancelled anytime from Settings in the app, and you keep access until the end of the month you've paid for. If you change your mind within 14 days of paying, you get a refund minus the days you used. See the <a href="refunds.html">Refund Policy</a> for the details.</p></div>
 <div class="qa"><h3>What Do You Store About Me?</h3><p>Your email, your name if you give one, and your phone's push address so alerts can reach it. Payments are handled by Stripe. Nothing is sold. See the <a href="privacy.html">Privacy Policy</a> for the details.</p></div>
 </div>
 </section>

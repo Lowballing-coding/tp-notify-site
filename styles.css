@@ -104,7 +104,7 @@ section.band { padding-block: 88px; }
 .dark { background: var(--night-raised); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .dark .muted { color: var(--ink-muted); }
 .plans { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 24px; }
-.plan { flex: 1 1 320px; background: var(--glass); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--space-8); }
+.plan { flex: 1 1 280px; background: var(--glass); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--space-8); }
 .plan.best { border: 2px solid var(--signal); box-shadow: var(--shadow-glow); }
 .plan h3 { font-size: 1.25rem; font-weight: 600; }
 .plan .head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
@@ -119,6 +119,8 @@ section.band { padding-block: 88px; }
 .plan li { display: flex; align-items: center; gap: var(--space-2); }
 .plan li::before { content: ""; flex: none; width: 6px; height: 11px; margin: 0 6px 3px 5px; border: solid var(--uv-ink); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg); }
 .plan .btn { margin-top: 26px; }
+.proof { font-weight: 600; color: var(--uv-ink); margin-top: var(--space-4); }
+.price s { color: var(--ink-muted); font-weight: 400; font-size: .6em; margin-left: 8px; }
 .dark .fine { margin-top: 28px; color: var(--ink-muted); font-size: .875rem; }
 .free-line { margin-top: 28px; }
 .free-line a { color: var(--link); font-weight: 600; }

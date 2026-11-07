@@ -22,6 +22,12 @@
   var invited = document.getElementById("invited-home");
   try { if (invited && /^"[0-9A-F]{6}"$/.test(localStorage.getItem("tp-ref") || "")) invited.hidden = false; } catch (e) {}
 
+  // Early-bird prices: after their real deadline, show the normal price instead.
+  document.querySelectorAll("[data-until]").forEach(function (el) {
+    if (Date.now() < Date.parse(el.dataset.until)) return;
+    if (el.dataset.late) el.textContent = el.dataset.late; else el.hidden = true;
+  });
+
   // Home page: "Live: checked FIXR 20 seconds ago" and how fast recent events sold out. Hidden if the checker is down.
   var live = document.getElementById("live"), stat = document.getElementById("sold-stat"), recent = document.getElementById("recent"), last = null;
   function span(min) {
@@ -45,6 +51,12 @@
         if (!j) return;
         last = j.ok && j.last_check_at ? Date.parse(j.last_check_at) : null;
         draw();
+        // The honest reason to pay: free alerts arrive 30 minutes late, and this many nights were gone by then.
+        if (j.sold_out_events >= 5 && j.under_30 >= 2) {
+          var hp = document.getElementById("hero-proof"), pp = document.getElementById("price-proof");
+          if (hp) { hp.textContent = j.under_30 + " of the last " + j.sold_out_events + " Timepiece nights that sold out were gone within 30 minutes."; hp.hidden = false; }
+          if (pp) { pp.textContent = "Free alerts arrive 30 minutes late. " + j.under_30 + " of the last " + j.sold_out_events + " sold-out nights were gone by then."; pp.hidden = false; }
+        }
         if (j.sold_out_events >= 3 && j.median_minutes != null) {
           stat.textContent = "Of the recent Timepiece events that sold out, half went within " + span(j.median_minutes) + " of going on sale.";
           stat.hidden = false;

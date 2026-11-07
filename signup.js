@@ -4,7 +4,8 @@
   var c = window.TP || {};
   var $ = function (id) { return document.getElementById(id); };
   var asked = new URLSearchParams(location.search).get("plan");
-  var plan = asked === "quarterly" || asked === "free" ? asked : "monthly";
+  var PLANS = ["year", "term", "monthly", "free"];
+  var plan = PLANS.indexOf(asked) >= 0 ? asked : "term";   // the Term Pass is the default (old ?plan=quarterly links land here too)
   var signIn = false, captchaToken = null, widget = null;
   var ref = null;   // a friend's invite code, saved by site.js from an invite link
   try { ref = JSON.parse(localStorage.getItem("tp-ref")); } catch (e) {}
@@ -67,7 +68,7 @@
     $("title").textContent = signIn ? "Sign In to Pay" : "Create Your Account";
     if (signIn) $("lead").textContent = "Sign in with the account you made, then choose a plan and pay.";
     $("toggle").textContent = signIn ? "Create a New Account" : "I Already Have an Account";
-    if (signIn && plan === "free") plan = "monthly";   // signing in here is only for paying
+    if (signIn && plan === "free") plan = "term";   // signing in here is only for paying
     document.querySelector('.plan-opt[data-plan="free"]').hidden = signIn;
     $("submit").textContent = signIn ? "Sign In and Continue to Payment" : "";
     showPlan();
@@ -121,11 +122,13 @@
 
   function goPay(userId, email) {
     if (plan === "free") { location.href = "success.html?free=1"; return; }   // every new account starts a free month
-    var link = plan === "quarterly" ? c.payQuarterly : c.payMonthly;
+    var link = plan === "year" ? c.payYear : plan === "term" ? c.payTerm : c.payMonthly;
+    var early = c.promoTermUntil && Date.now() < Date.parse(c.promoTermUntil);
+    var promo = plan === "monthly" ? c.promoMonthly : plan === "term" && early ? c.promoTerm : "";
     if (!link) { say("Your account is ready. Payments aren't open yet, so we'll be in touch soon.", true); return; }
     location.href = link + (link.indexOf("?") < 0 ? "?" : "&") + "client_reference_id=" + encodeURIComponent(userId) +
       "&locked_prefilled_email=" + encodeURIComponent(email) +
-      (plan === "monthly" && c.promoMonthly ? "&prefilled_promo_code=" + encodeURIComponent(c.promoMonthly) : "");
+      (promo ? "&prefilled_promo_code=" + encodeURIComponent(promo) : "");
   }
 
   // ---- Submit ----
