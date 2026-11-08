@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TP Notify: Ticket Alerts for Timepiece Events</title>
 <meta name="description" content="TP Notify sends a push alert to your phone the moment a Timepiece event is listed as on sale on FIXR. From £3.99 for your first month.">
-<meta name="theme-color" content="#0c0c0e" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#f6f5f0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0916" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f3fb" media="(prefers-color-scheme: light)">
 <link rel="canonical" href="https://lowballing-coding.github.io/tp-notify-site/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TP Notify">
@@ -31,7 +31,7 @@
 <header class="top">
 <nav class="wrap" aria-label="Main">
 <a class="brand" href="./">
-<svg viewBox="5 5 54 54" aria-hidden="true"><path d="M12 14H52A6 6 0 0 1 58 20V26A6 6 0 0 0 58 38V44A6 6 0 0 1 52 50H12A6 6 0 0 1 6 44V38A6 6 0 0 0 6 26V20A6 6 0 0 1 12 14Z" fill="#c8ff2e"/><path d="M42 19V23M42 28V32M42 37V41M42 46V48" stroke="#0c0c0e" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="32" r="7" fill="#0c0c0e"/></svg>
+<svg viewBox="5 5 54 54" aria-hidden="true"><path d="M12 14H52A6 6 0 0 1 58 20V26A6 6 0 0 0 58 38V44A6 6 0 0 1 52 50H12A6 6 0 0 1 6 44V38A6 6 0 0 0 6 26V20A6 6 0 0 1 12 14Z" fill="#ffc95c"/><path d="M42 19V23M42 28V32M42 37V41M42 46V48" stroke="#140d22" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="32" r="7" fill="#140d22"/></svg>
 <span>TP Notify</span>
 </a>
 <div class="navlinks">
@@ -61,7 +61,7 @@
 
 <div class="demo" aria-hidden="true">
 <div class="phone"><div class="screen">
-<div class="mini"><svg viewBox="5 5 54 54"><path d="M12 14H52A6 6 0 0 1 58 20V26A6 6 0 0 0 58 38V44A6 6 0 0 1 52 50H12A6 6 0 0 1 6 44V38A6 6 0 0 0 6 26V20A6 6 0 0 1 12 14Z" fill="#c8ff2e"/><path d="M42 19V23M42 28V32M42 37V41M42 46V48" stroke="#0c0c0e" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="32" r="7" fill="#0c0c0e"/></svg><span>TP Notify</span></div>
+<div class="mini"><svg viewBox="5 5 54 54"><path d="M12 14H52A6 6 0 0 1 58 20V26A6 6 0 0 0 58 38V44A6 6 0 0 1 52 50H12A6 6 0 0 1 6 44V38A6 6 0 0 0 6 26V20A6 6 0 0 1 12 14Z" fill="#ffc95c"/><path d="M42 19V23M42 28V32M42 37V41M42 46V48" stroke="#140d22" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="32" r="7" fill="#140d22"/></svg><span>TP Notify</span></div>
 <div class="ttl">Alerts</div>
 <div class="day">Today</div>
 <div class="ticket">
@@ -74,7 +74,9 @@
 </div>
 </div>
 <div class="fixr">Open on FIXR</div>
-<div class="cap">Sample alert, for illustration</div>
+<div class="day">Earlier</div>
+<div class="row"><div class="tile"><span>Fri</span><b>13</b><span>Nov</span></div><div><span class="pill soon">On Sale Soon</span><div class="rname">Another sample event</div></div></div>
+<div class="cap">Sample alerts, for illustration</div>
 </div></div>
 </div>
 </section>
@@ -94,12 +96,16 @@
 <section id="app" class="band wrap">
 <h2>Get the App</h2>
 <p class="lede phone-only">Tap below to open TP Notify. It shows you how to add it to your Home Screen, which takes a few seconds.</p>
-<p class="lede computer-only">Point your phone's camera at this code to get TP Notify on your phone. Or download it to this computer, where it opens in its own window from your desktop, Start menu or Dock.</p>
-<div class="get-app">
-<img class="computer-only" src="app-qr.svg" alt="QR code that opens the TP Notify app on your phone" width="168" height="168">
-<div class="cta">
-<a class="btn phone-only app-link" href="https://lowballing-coding.github.io/timepiece-alerts/">Get TP Notify</a>
-<a class="btn outline computer-only app-link" href="https://lowballing-coding.github.io/timepiece-alerts/">Download for This Computer</a>
+<p class="lede computer-only">Get alerts on your phone, on this computer, or on both.</p>
+<a class="btn phone-only app-link get-phone" href="https://lowballing-coding.github.io/timepiece-alerts/">Get TP Notify</a>
+<div class="get-app computer-only">
+<div class="way">
+<img src="app-qr.svg" alt="QR code that opens the TP Notify app on your phone" width="148" height="148">
+<div><h3>On Your Phone</h3><p>Point your phone's camera at this code. TP Notify opens and shows you how to add it to your Home Screen.</p></div>
+</div>
+<div class="way">
+<div class="window" aria-hidden="true"><div class="wbar"><span></span><span></span><span></span></div><div class="wbody"><div class="wside"><span></span><span class="on"></span><span></span><span></span><span></span></div><div class="wmain"><span class="wttl"></span><span class="hot"></span><span></span><span></span><span></span></div></div></div>
+<div><h3>On This Computer</h3><p>It opens in its own window from your Dock, Start menu or desktop.</p><a class="btn outline app-link" href="https://lowballing-coding.github.io/timepiece-alerts/">Download for This Computer</a></div>
 </div>
 </div>
 </section>
@@ -110,7 +116,7 @@
 <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17V11a6 6 0 0 1 12 0v6l1.5 2h-15zM10 21h4"/></svg><div><h3>Push Alerts to Your Lock Screen</h3><p>A short alert with the event name and date, and a button that opens it on FIXR.</p></div></div>
 <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><h3>On Sale Soon Heads-Ups</h3><p>Get a nudge when an event is flagged as coming soon, so you know to keep an eye on it.</p></div></div>
 <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><div><h3>Quiet Hours</h3><p>Pick the hours you don't want to be disturbed. Anything you miss still shows in the app.</p></div></div>
-<div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><div><h3>An Alert History</h3><p>Every alert is saved in the app. Swipe to clear the ones you're done with.</p></div></div>
+<div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><div><h3>An Alert History</h3><p>Every alert is saved in the app, and you can clear the ones you're done with.</p></div></div>
 <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 9M20 4v5h-5M20 12a8 8 0 0 1-13.7 5.6L4 15M4 20v-5h5"/></svg><div><h3>One Alert per Event</h3><p>You get each kind of alert once per event, so no repeats. Didn't get a ticket? Tap No in the app and we'll ping you whenever it's listed as on sale again.</p></div></div>
 <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/></svg><div><h3>Only Alerts, Never Buys</h3><p>TP Notify never buys tickets for you. You choose what to buy, on FIXR.</p></div></div>
 <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg><div><h3>Every Event in One List</h3><p>See every Timepiece event on FIXR and whether it's on sale, sold out or coming soon. Add the night to your calendar once you've got a ticket.</p></div></div>
@@ -144,7 +150,7 @@
 </div>
 </section>
 
-<section id="faq" class="faq">
+<section id="faq" class="faq wrap">
 <h2>Questions</h2>
 <div class="list">
 <div class="qa"><h3>Is There a Free Version?</h3><p>Every new account gets a free month, with no card needed. During it, your first Tickets on Sale alert arrives instantly and later ones reach you 30 minutes late. On Sale Soon and Check Manually alerts arrive instantly. If a night sells out before your late alert is due, we tell you so instead. After the month, alerts stop until you choose a plan. Paid plans get every alert the moment it happens.</p></div>
@@ -163,7 +169,7 @@
 <p>Get the alert while tickets are still there to buy.</p>
 <p class="stat" id="sold-stat" hidden></p>
 <ul class="recent" id="recent" hidden></ul>
-<a class="btn light" href="signup.html?plan=free">Start Your Free Month</a>
+<a class="btn" href="signup.html?plan=free">Start Your Free Month</a>
 </div>
 </section>
 </main>
@@ -171,7 +177,7 @@
 <footer class="foot">
 <div class="wrap">
 <div class="about">
-<a class="brand" href="./"><svg viewBox="5 5 54 54" aria-hidden="true"><path d="M12 14H52A6 6 0 0 1 58 20V26A6 6 0 0 0 58 38V44A6 6 0 0 1 52 50H12A6 6 0 0 1 6 44V38A6 6 0 0 0 6 26V20A6 6 0 0 1 12 14Z" fill="#c8ff2e"/><path d="M42 19V23M42 28V32M42 37V41M42 46V48" stroke="#0c0c0e" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="32" r="7" fill="#0c0c0e"/></svg><span>TP Notify</span></a>
+<a class="brand" href="./"><svg viewBox="5 5 54 54" aria-hidden="true"><path d="M12 14H52A6 6 0 0 1 58 20V26A6 6 0 0 0 58 38V44A6 6 0 0 1 52 50H12A6 6 0 0 1 6 44V38A6 6 0 0 0 6 26V20A6 6 0 0 1 12 14Z" fill="#ffc95c"/><path d="M42 19V23M42 28V32M42 37V41M42 46V48" stroke="#140d22" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="32" r="7" fill="#140d22"/></svg><span>TP Notify</span></a>
 <p>TP Notify is an independent alert service run by Peter Ellul, 51 New North Road, Exeter, EX4 4EP. It is not affiliated with, or endorsed by, Timepiece or FIXR. It only sends alerts and never buys tickets.</p>
 </div>
 <nav aria-label="Legal">
