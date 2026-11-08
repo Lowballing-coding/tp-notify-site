@@ -1,91 +1,93 @@
-/* TP Notify "Night out" design tokens, copied from the TP Notify UI kit (tokens.css). Re-copy it if the kit changes.
+/* TP Notify "Afterglow" design tokens: the same colours as the app (index.html in timepiece-alerts). A club night after
+   dark. Gold is rare on purpose: it only means on sale now, live, or best value. Violet is anything you tap or pick.
    Dark by default; pages set data-theme="auto" on <html> so the site follows the phone's light or dark setting. */
 
 :root, [data-theme="dark"] {
-  --night: #0c0c0e;
-  --night-raised: #16161a;
-  --night-high: #212127;
-  --line: #2e2e36;
-  --line-strong: #6a6a76;
-  --ink: #f4f2ec;
-  --ink-muted: #a3a19b;
-  --signal: #c8ff2e;
-  --on-signal: #0c0c0e;
-  --signal-ink: #c8ff2e;
-  --signal-soft: #1f2a06;
-  --action: #c8ff2e;
-  --on-action: #0c0c0e;
-  --uv: #9580ff;
-  --on-uv: #0c0c0e;
-  --uv-ink: #a99aff;
-  --uv-soft: #1f1a3d;
+  --night: #0c0916;
+  --night-raised: rgba(255, 255, 255, .055);
+  --night-high: rgba(255, 255, 255, .095);
+  --line: rgba(255, 255, 255, .09);
+  --line-strong: #625a80;
+  --ink: #f8f6ff;
+  --ink-muted: #a9a3c4;
+  --signal: #ffc95c;
+  --on-signal: #140d22;
+  --signal-ink: #ffd88a;
+  --signal-soft: rgba(255, 201, 92, .14);
+  --edge: rgba(255, 201, 92, .45);
+  --stub: linear-gradient(160deg, rgba(150, 110, 255, .3), rgba(150, 110, 255, .12));
+  --action: linear-gradient(135deg, #6c46e8, #9461fb);
+  --on-action: #ffffff;
+  --uv: #7650ee;
+  --on-uv: #ffffff;
+  --uv-ink: #c0aaff;
+  --uv-soft: rgba(150, 110, 255, .22);
   --danger: #ff6b5e;
-  --on-danger: #0c0c0e;
+  --on-danger: #0c0916;
   --danger-ink: #ff8075;
-  --danger-soft: #3a1411;
-  --focus: #c8ff2e;
-  --link: var(--signal-ink);
-  --shadow-none: none;
-  --shadow-glow: 0 0 0 1px #c8ff2e40, 0 12px 40px #c8ff2e1f;
+  --danger-soft: rgba(255, 107, 94, .16);
+  --focus: #c0aaff;
+  --link: var(--uv-ink);
+  --glass: rgba(255, 255, 255, .035);
+  --shadow-glow: 0 0 0 1px rgba(255, 201, 92, .1), 0 16px 48px rgba(150, 110, 255, .18);
+  --wash: radial-gradient(1000px 600px at 85% -5%, rgba(138, 92, 255, .4), transparent 62%), radial-gradient(800px 500px at -5% 90%, rgba(255, 79, 160, .16), transparent 60%);
   color-scheme: dark;
 }
 
 [data-theme="light"] {
-  --night: #f6f5f0;
+  --night: #f6f3fb;
   --night-raised: #ffffff;
-  --night-high: #ecebe5;
-  --line: #dcdad2;
-  --line-strong: #8a877d;
-  --ink: #0c0c0e;
-  --ink-muted: #5d5b55;
-  --signal: #c8ff2e;
-  --on-signal: #0c0c0e;
-  --signal-ink: #3b5700;
-  --signal-soft: #eaf8c4;
-  --action: #0c0c0e;
-  --on-action: #c8ff2e;
-  --uv: #5b3fe0;
-  --on-uv: #ffffff;
-  --uv-ink: #4a2fd0;
-  --uv-soft: #ebe7ff;
+  --night-high: #f1edf9;
+  --line: #e3ddf0;
+  --line-strong: #8f85a8;
+  --ink: #1a1030;
+  --ink-muted: #675f7d;
+  --signal: #ffc23d;
+  --on-signal: #1a1030;
+  --signal-ink: #7d5200;
+  --signal-soft: rgba(255, 194, 61, .2);
+  --edge: rgba(214, 150, 30, .55);
+  --stub: linear-gradient(160deg, rgba(118, 80, 238, .16), rgba(118, 80, 238, .06));
+  --uv: #6a3fe0;
+  --uv-ink: #5a2fd0;
+  --uv-soft: rgba(118, 80, 238, .12);
   --danger: #c8241a;
   --on-danger: #ffffff;
   --danger-ink: #b3201a;
   --danger-soft: #fde8e5;
-  --focus: #5b3fe0;
-  --link: var(--signal-ink);
-  --shadow-none: none;
-  --shadow-glow: 0 1px 2px #0c0c0e14, 0 12px 32px #0c0c0e1a;
+  --focus: #6a3fe0;
+  --glass: rgba(255, 255, 255, .55);
+  --shadow-glow: 0 0 0 1px rgba(214, 150, 30, .12), 0 14px 36px rgba(118, 80, 238, .14);
+  --wash: radial-gradient(1000px 600px at 85% -5%, rgba(150, 110, 255, .22), transparent 62%), radial-gradient(800px 500px at -5% 90%, rgba(255, 173, 85, .18), transparent 60%);
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: light) {
   [data-theme="auto"] {
-    --night: #f6f5f0;
+    --night: #f6f3fb;
     --night-raised: #ffffff;
-    --night-high: #ecebe5;
-    --line: #dcdad2;
-    --line-strong: #8a877d;
-    --ink: #0c0c0e;
-    --ink-muted: #5d5b55;
-    --signal: #c8ff2e;
-    --on-signal: #0c0c0e;
-    --signal-ink: #3b5700;
-    --signal-soft: #eaf8c4;
-    --action: #0c0c0e;
-    --on-action: #c8ff2e;
-    --uv: #5b3fe0;
-    --on-uv: #ffffff;
-    --uv-ink: #4a2fd0;
-    --uv-soft: #ebe7ff;
+    --night-high: #f1edf9;
+    --line: #e3ddf0;
+    --line-strong: #8f85a8;
+    --ink: #1a1030;
+    --ink-muted: #675f7d;
+    --signal: #ffc23d;
+    --on-signal: #1a1030;
+    --signal-ink: #7d5200;
+    --signal-soft: rgba(255, 194, 61, .2);
+    --edge: rgba(214, 150, 30, .55);
+    --stub: linear-gradient(160deg, rgba(118, 80, 238, .16), rgba(118, 80, 238, .06));
+    --uv: #6a3fe0;
+    --uv-ink: #5a2fd0;
+    --uv-soft: rgba(118, 80, 238, .12);
     --danger: #c8241a;
     --on-danger: #ffffff;
     --danger-ink: #b3201a;
     --danger-soft: #fde8e5;
-    --focus: #5b3fe0;
-    --link: var(--signal-ink);
-    --shadow-none: none;
-    --shadow-glow: 0 1px 2px #0c0c0e14, 0 12px 32px #0c0c0e1a;
+    --focus: #6a3fe0;
+    --glass: rgba(255, 255, 255, .55);
+    --shadow-glow: 0 0 0 1px rgba(214, 150, 30, .12), 0 14px 36px rgba(118, 80, 238, .14);
+    --wash: radial-gradient(1000px 600px at 85% -5%, rgba(150, 110, 255, .22), transparent 62%), radial-gradient(800px 500px at -5% 90%, rgba(255, 173, 85, .18), transparent 60%);
     color-scheme: light;
   }
 }
@@ -99,25 +101,9 @@
   --space-8: 32px;
   --space-12: 48px;
   --space-16: 64px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
   --radius-pill: 999px;
-  --notch: 10px;
-  --font-display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+  --font-display: "Unbounded", "Schibsted Grotesk", system-ui, sans-serif;
   --font-sans: "Schibsted Grotesk", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
 }
-
-/* Type styles */
-.tp-type-display-xl { font-family: var(--font-display); font-size: 96px; line-height: 0.9; font-weight: 800; letter-spacing: 0.01em; text-transform: uppercase; }
-.tp-type-display-l { font-family: var(--font-display); font-size: 64px; line-height: 0.92; font-weight: 800; letter-spacing: 0.01em; text-transform: uppercase; }
-.tp-type-display-m { font-family: var(--font-display); font-size: 40px; line-height: 0.95; font-weight: 800; letter-spacing: 0.01em; text-transform: uppercase; }
-.tp-type-display-s { font-family: var(--font-display); font-size: 28px; line-height: 1; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; }
-.tp-type-title { font-family: var(--font-sans); font-size: 20px; line-height: 26px; font-weight: 600; }
-.tp-type-body-l { font-family: var(--font-sans); font-size: 18px; line-height: 28px; font-weight: 400; }
-.tp-type-body { font-family: var(--font-sans); font-size: 16px; line-height: 24px; font-weight: 400; }
-.tp-type-label { font-family: var(--font-sans); font-size: 15px; line-height: 20px; font-weight: 600; }
-.tp-type-caption { font-family: var(--font-sans); font-size: 13px; line-height: 18px; font-weight: 400; }
-.tp-type-data { font-family: var(--font-mono); font-size: 13px; line-height: 18px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
-.tp-type-pill { font-family: var(--font-mono); font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
