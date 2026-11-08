@@ -55,7 +55,7 @@
         if (j.sold_out_events >= 5 && j.under_30 >= 2) {
           var hp = document.getElementById("hero-proof"), pp = document.getElementById("price-proof");
           if (hp) { hp.textContent = j.under_30 + " of the last " + j.sold_out_events + " Timepiece nights that sold out were gone within 30 minutes."; hp.hidden = false; }
-          if (pp) { pp.textContent = "Free alerts arrive 30 minutes late. " + j.under_30 + " of the last " + j.sold_out_events + " sold-out nights were gone by then."; pp.hidden = false; }
+          if (pp) { pp.textContent = "On the free month, on-sale alerts after your first arrive 30 minutes late. " + j.under_30 + " of the last " + j.sold_out_events + " sold-out nights were gone by then."; pp.hidden = false; }
         }
         if (j.sold_out_events >= 3 && j.median_minutes != null) {
           stat.textContent = "Of the recent Timepiece events that sold out, half went within " + span(j.median_minutes) + " of going on sale.";
