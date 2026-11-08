@@ -148,7 +148,8 @@
     btn.disabled = true; btn.textContent = signIn ? "Signing In..." : "Creating Your Account..."; say("");
     var security = captchaToken ? { captcha_token: captchaToken } : undefined;
     var body = { email: email, password: pw, gotrue_meta_security: security };
-    if (!signIn) body.data = ref ? { name: name, ref: ref } : { name: name };
+    var from = (new URLSearchParams(location.search).get("from") || "").trim().toLowerCase();   // see site.js
+    if (!signIn) { body.data = { name: name }; if (ref) body.data.ref = ref; if (/^[a-z0-9-]{1,32}$/.test(from)) body.data.src = from; }
 
     call("POST", signIn ? "/auth/v1/token?grant_type=password" : "/auth/v1/signup", body)
       .then(function (j) {

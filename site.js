@@ -19,6 +19,12 @@
   // A friend's invite link (?ref=CODE): keep the code until sign-up. The app reads the same key (same web address).
   var ref = (new URLSearchParams(location.search).get("ref") || "").trim().toUpperCase();
   if (/^[0-9A-F]{6}$/.test(ref)) { try { localStorage.setItem("tp-ref", JSON.stringify(ref)); } catch (e) {} }
+  // Where a visitor came from (?from=ig-bio on an Instagram link): carried in the sign-up links' address, never stored
+  // on the device, and saved on the profile at sign-up so the Admin tab can count sign-ups and paying members per source.
+  var from = (new URLSearchParams(location.search).get("from") || "").trim().toLowerCase();
+  if (/^[a-z0-9-]{1,32}$/.test(from)) [].forEach.call(document.querySelectorAll('a[href^="signup.html"]'), function (a) {
+    var h = a.getAttribute("href"); a.setAttribute("href", h + (h.indexOf("?") < 0 ? "?" : "&") + "from=" + from);
+  });
   var invited = document.getElementById("invited-home");
   try { if (invited && /^"[0-9A-F]{6}"$/.test(localStorage.getItem("tp-ref") || "")) invited.hidden = false; } catch (e) {}
 
