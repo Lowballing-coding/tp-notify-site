@@ -147,6 +147,8 @@ section.band { padding-block: 88px; }
 .cta-band a:not(.btn) { color: inherit; }
 
 /* Footer */
+.totop { text-align: center; padding: 8px 24px 56px; }
+.totop .btn { gap: 8px; }
 footer.foot { background: var(--night-raised); border-top: 1px solid var(--line); color: var(--ink-muted); }
 footer.foot .wrap { padding: 48px 24px; display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; }
 footer.foot .about { flex: 1 1 380px; max-width: 520px; font-size: .875rem; }
