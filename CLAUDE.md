@@ -28,3 +28,7 @@ The site sells Term Passes, Year Passes and a monthly plan to UK consumers. Chan
 ## Checking a change
 
 There are no tests. Preview locally (`.claude/launch.json` serves the folder on port 8001), check phone and desktop widths and both colour schemes, and check the console for errors. On localhost, CORS errors for `cloudflareinsights.com` (analytics) and a failing Turnstile box are expected and can be ignored.
+
+## Keeping this file current
+
+When a session teaches you something lasting about this repo (a rule Peter stated or corrected, a gotcha, a needed check), add it here in the same PR as the work, and fix any line here that turned out to be wrong. Skip one-off details and anything secret.
