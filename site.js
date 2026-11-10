@@ -87,29 +87,6 @@
     document.addEventListener("visibilitychange", load);
   }
 
-  // Motion: the phone story's screen follows the chapter in the middle of the window, and sections fade up as they arrive.
-  var screen = document.getElementById("story-screen");
-  if (screen && "IntersectionObserver" in window) {
-    var chapters = [].slice.call(document.querySelectorAll(".ch"));
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        chapters.forEach(function (ch) { ch.classList.toggle("on", ch === e.target); });
-        screen.dataset.v = chapters.indexOf(e.target);
-      });
-    }, { rootMargin: "-45% 0px -45% 0px" });
-    chapters.forEach(function (ch) { io.observe(ch); });
-  }
-  if (!matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
-    document.documentElement.classList.add("motion");
-    var rv = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); rv.unobserve(e.target); } });
-    }, { rootMargin: "0px 0px -10% 0px" });
-    [].forEach.call(document.querySelectorAll("main > section:not(.hero):not(.story) > .wrap, main > section.wrap:not(.hero)"), function (el) {
-      el.classList.add("reveal"); rv.observe(el);
-    });
-  }
-
   if (c.analyticsToken) {
     var s = document.createElement("script");
     s.defer = true;
