@@ -108,6 +108,38 @@
     [].forEach.call(document.querySelectorAll("main > section:not(.hero):not(.story) > .wrap, main > section.wrap:not(.hero)"), function (el) {
       el.classList.add("reveal"); rv.observe(el);
     });
+
+    // Screen to phone: the lock screen arrives filling the whole window, then shrinks back into the phone as you
+    // scroll through the room above chapter 1 (styles.css: .motion .story-phone + .ch margin-top). The screen box
+    // itself changes size, so its clock and alert lay out for each size instead of being stretched.
+    var stick = document.querySelector(".story-phone"), phone = stick && stick.querySelector(".phone"), grid = document.querySelector(".story-grid");
+    if (phone && screen) {
+      var rest, queued = false, vars = ["--sx", "--sy", "--sw", "--sh"];
+      var measure = function () {   // the screen's resting box inside the phone, and the phone's scale (smaller on phones)
+        vars.forEach(function (v) { stick.style.removeProperty(v); });
+        var p = phone.getBoundingClientRect();
+        rest = { x: screen.offsetLeft, y: screen.offsetTop, w: screen.offsetWidth, h: screen.offsetHeight, k: p.width / phone.offsetWidth,
+          top: (parseFloat(getComputedStyle(stick).top) || 0) + (p.top - stick.getBoundingClientRect().top) };
+      };
+      var draw = function () {
+        queued = false;
+        var vw = document.documentElement.clientWidth, vh = innerHeight, k = rest.k, p = phone.getBoundingClientRect();
+        var t = Math.min(1, Math.max(0, (rest.top - grid.getBoundingClientRect().top) / (vh * 0.9)));
+        var u = 1 - t * t * (3 - 2 * t);   // 1 = fills the window, 0 = back in the phone (eased)
+        var lerp = function (a, b) { return a + (b - a) * u; };
+        // the window's box in the phone's own pixels, measured from where the phone will be once it sticks,
+        // so before then the big screen scrolls up with the page like any other section
+        stick.style.setProperty("--sx", lerp(rest.x, -p.left / k - 1) + "px");
+        stick.style.setProperty("--sy", lerp(rest.y, -rest.top / k - 1) + "px");
+        stick.style.setProperty("--sw", lerp(rest.w, vw / k) + "px");
+        stick.style.setProperty("--sh", lerp(rest.h, vh / k) + "px");
+        stick.style.setProperty("--z", (1 - u).toFixed(3));
+      };
+      var ask = function () { if (!queued) { queued = true; requestAnimationFrame(draw); } };
+      measure(); draw();
+      addEventListener("scroll", ask, { passive: true });
+      addEventListener("resize", function () { measure(); draw(); });
+    }
   }
 
   if (c.analyticsToken) {

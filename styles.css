@@ -313,3 +313,22 @@ footer.foot nav a:hover { color: var(--ink); opacity: 1; }
   .ch h2 { font-size: 1.5rem; }
 }
 @media (max-width: 999px) and (max-height: 700px) { .story-phone { transform: scale(.5); } }
+
+/* Screen to phone (site.js): the screen box grows to fill the window and shrinks back into the phone; --z is 0 when it fills the
+   window and 1 when it's home, bringing the bezel, corners and glow back as it lands. Sizes use the screen's own size (cq units)
+   so the lock screen looks right at both sizes. */
+.motion .story { overflow: clip; }
+.motion .story-phone + .ch { margin-top: 90vh; }
+.motion .story .phone { position: relative; height: 590px;
+  background: color-mix(in srgb, var(--night-high) calc(var(--z, 1) * 100%), transparent);
+  border-color: color-mix(in srgb, var(--line) calc(var(--z, 1) * 100%), transparent);
+  box-shadow: 0 30px 90px color-mix(in srgb, rgba(118, 80, 238, .35) calc(var(--z, 1) * 100%), transparent); }
+.motion #story-screen { position: absolute; left: var(--sx, 13px); top: var(--sy, 13px); width: var(--sw, 290px); height: var(--sh, 560px);
+  border-radius: calc(32px * var(--z, 1)); container-type: size; }
+.motion #story-screen .cap { opacity: var(--z, 1); }
+.motion .lock { background: radial-gradient(max(260px, 60cqw) max(300px, 70cqh) at 50% 0%, rgba(138, 92, 255, .45), transparent 70%); }
+.motion .clock { margin-top: calc(44px + max(0px, 100cqh - 560px) * .2); font-size: calc(64px + max(0px, 100cqh - 560px) * .2); }   /* phone size at rest, bigger as the screen grows */
+.motion .date { font-size: max(14px, 2.4cqh); }
+.motion .note-card { font-size: max(13px, 2.2cqh); max-width: 30em; margin-inline: auto; margin-top: max(64px, 8cqh); padding: .9em 1.1em; border-radius: max(20px, 1.5em); }
+.motion .note-card .nhead { font-size: .85em; } .motion .note-card svg { width: 1.25em; height: 1.25em; }
+.motion .note-card b { font-size: 1.15em; } .motion .note-card p { font-size: 1em; line-height: 1.4; }
