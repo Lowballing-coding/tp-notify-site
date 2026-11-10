@@ -117,7 +117,7 @@
     if (raw && !/violates|constraint|PGRST|JWT|relation|column|syntax|uuid|row-level|Not allowed/i.test(raw)) return raw;
     if (status === 429) return "Too many tries in a row. Wait a minute, then try again.";
     if (status >= 500) return "Our server is having a problem. Please try again in a minute.";
-    return "Something went wrong. Please try again, or email TPNotify@outlook.com if it keeps happening.";
+    return "Something went wrong. Please try again, or email tpnotifyupdates@gmail.com if it keeps happening.";
   }
 
   function goPay(userId, email) {
@@ -154,7 +154,7 @@
     call("POST", signIn ? "/auth/v1/token?grant_type=password" : "/auth/v1/signup", body)
       .then(function (j) {
         var user = (j && j.user) || j, token = j && j.access_token;
-        if (!user || !user.id) throw new Error("Something went wrong. Please try again, or email TPNotify@outlook.com if it keeps happening.");
+        if (!user || !user.id) throw new Error("Something went wrong. Please try again, or email tpnotifyupdates@gmail.com if it keeps happening.");
         if (!signIn) { try { localStorage.removeItem("tp-ref"); } catch (e) {} }   // the invite is used up
         if (!token) return goPay(user.id, email);   // email confirmation is on: no session yet, the id is enough to pay
         var steps = [];
