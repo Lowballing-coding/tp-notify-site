@@ -24,6 +24,8 @@ The site sells Term Passes, Year Passes and a monthly plan to UK consumers. Chan
 - British English. Contact email is tpnotifyupdates@gmail.com.
 - Big visible changes (such as home page animations) wait for Peter to review before going live.
 - Must look right on phones (light and dark mode via `data-theme="auto"`) and wide desktop screens.
+- Nothing should jump: content that appears after load uses `show(el, on)` in site.js, and form changes go through `window.tpFlip` (see `smooth()` in signup.js). Motion only runs with `html.motion` (reduced motion = still).
+- site.js is one big function: never reuse a `var` or function name in it. A `var draw` in the motion code once replaced the Live line's `draw()` and hid "Live: checked FIXR" on the home page.
 
 ## Checking a change
 
