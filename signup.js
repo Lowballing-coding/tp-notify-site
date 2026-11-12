@@ -11,6 +11,12 @@
   try { ref = JSON.parse(localStorage.getItem("tp-ref")); } catch (e) {}
   if (!/^[0-9A-F]{6}$/.test(ref || "")) ref = null;
 
+  // Changes to the form (sign in / sign up, the plan's wording, a message) slide the rest into place instead of jumping (site.js).
+  function smooth(change) {
+    var els = [].slice.call(document.querySelectorAll("main > :not(#form):not(.plan-pick), #form > *, .plan-opt"));
+    window.tpFlip ? window.tpFlip(els, change) : change();
+  }
+
   // ---- Plan choice ----
   function showPlan() {
     $("invited").hidden = signIn || !ref || plan !== "free";   // the extra week is on the free month
@@ -21,7 +27,7 @@
       ? "Your free month starts as soon as you create your account. No card needed. Upgrade any time for instant alerts."
       : "Then pay securely with Stripe. Your account is approved automatically as soon as the payment goes through.";
   }
-  document.querySelectorAll(".plan-opt").forEach(function (b) { b.onclick = function () { plan = b.dataset.plan; showPlan(); }; });
+  document.querySelectorAll(".plan-opt").forEach(function (b) { b.onclick = function () { plan = b.dataset.plan; smooth(showPlan); }; });
   showPlan();
 
   // ---- Password strength (0 Too Short, 1 Weak, 2 Okay, 3 Strong, 4 Very Strong). Same rules as the app. ----
@@ -74,9 +80,9 @@
     showPlan();
     say("");
   }
-  $("toggle").onclick = function () { setMode(!signIn); };
+  $("toggle").onclick = function () { smooth(function () { setMode(!signIn); }); };
 
-  function say(text, ok) { var m = $("msg"); m.textContent = text; m.className = "form-msg" + (text && !ok ? " error" : ""); }
+  function say(text, ok) { var m = $("msg"); if (m.textContent !== text) smooth(function () { m.textContent = text; }); m.className = "form-msg" + (text && !ok ? " error" : ""); }
 
   // An error goes right under the field it's about, is announced to screen readers, and that field gets focus.
   function fieldError(id, text) {

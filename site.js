@@ -34,6 +34,35 @@
     if (el.dataset.late) el.textContent = el.dataset.late; else el.hidden = true;
   });
 
+  // Smooth changes, only when the visitor hasn't asked for reduced motion (html.motion, added further down).
+  var moving = function () { return document.documentElement.classList.contains("motion") && !!Element.prototype.animate; };
+  // Show or hide something that arrives after the page has loaded: it opens up and fades in instead of pushing
+  // everything below it down in one jump.
+  function show(el, on) {
+    if (!el || el.hidden === !on) return;
+    el.hidden = !on;
+    if (!on || !moving()) return;
+    var cs = getComputedStyle(el), full = { height: el.offsetHeight + "px", marginTop: cs.marginTop, marginBottom: cs.marginBottom, opacity: 1 };
+    el.style.overflow = "hidden"; el.style.boxSizing = "border-box";
+    el.animate([{ height: "0px", marginTop: "0px", marginBottom: "0px", paddingTop: "0px", paddingBottom: "0px", opacity: 0 }, full],
+      { duration: 450, easing: "cubic-bezier(.2, .8, .2, 1)" }).onfinish = function () { el.style.overflow = el.style.boxSizing = ""; };
+  }
+  // Run change(), then let each of els glide from where it was to where it is now (FLIP); ones that appeared fade in.
+  var flipping = false;
+  window.tpFlip = function (els, change) {
+    if (flipping || !moving()) return change();
+    var was = els.map(function (el) { return el.offsetParent ? el.getBoundingClientRect() : null; });
+    flipping = true;
+    try { change(); } finally { flipping = false; }
+    els.forEach(function (el, i) {
+      if (!el.offsetParent) return;
+      var b = was[i], a = el.getBoundingClientRect();
+      if (!b) { el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 260, easing: "ease-out" }); return; }
+      var dx = b.left - a.left, dy = b.top - a.top;
+      if (Math.abs(dx) + Math.abs(dy) > 0.5) el.animate([{ transform: "translate(" + dx + "px, " + dy + "px)" }, { transform: "none" }], { duration: 340, easing: "cubic-bezier(.2, .8, .2, 1)" });
+    });
+  };
+
   // Home page: "Live: checked FIXR 20 seconds ago" and how fast recent events sold out. Hidden if the checker is down.
   var live = document.getElementById("live"), stat = document.getElementById("sold-stat"), recent = document.getElementById("recent"), last = null;
   function span(min) {
@@ -44,9 +73,9 @@
   }
   function draw() {
     var s = last ? Math.max(0, Math.round((Date.now() - last) / 1000)) : Infinity;
-    live.hidden = s > 300;
     live.textContent = "Live: checked FIXR " + (s < 10 ? "just now" : s < 60 ? s + " seconds ago"
       : s < 120 ? "1 minute ago" : Math.floor(s / 60) + " minutes ago") + ".";
+    show(live, s <= 300);
   }
   function load() {
     if (document.hidden) return;
@@ -60,12 +89,12 @@
         // The honest reason to pay: free alerts arrive 30 minutes late, and this many nights were gone by then.
         if (j.sold_out_events >= 5 && j.under_30 >= 2) {
           var hp = document.getElementById("hero-proof"), pp = document.getElementById("price-proof");
-          if (hp) { hp.textContent = j.under_30 + " of the last " + j.sold_out_events + " Timepiece nights that sold out were gone within 30 minutes."; hp.hidden = false; }
-          if (pp) { pp.textContent = "On the free month, on-sale alerts after your first arrive 30 minutes late. " + j.under_30 + " of the last " + j.sold_out_events + " sold-out nights were gone by then."; pp.hidden = false; }
+          if (hp) { hp.textContent = j.under_30 + " of the last " + j.sold_out_events + " Timepiece nights that sold out were gone within 30 minutes."; show(hp, true); }
+          if (pp) { pp.textContent = "On the free month, on-sale alerts after your first arrive 30 minutes late. " + j.under_30 + " of the last " + j.sold_out_events + " sold-out nights were gone by then."; show(pp, true); }
         }
         if (j.sold_out_events >= 3 && j.median_minutes != null) {
           stat.textContent = "Of the recent Timepiece events that sold out, half went within " + span(j.median_minutes) + " of going on sale.";
-          stat.hidden = false;
+          show(stat, true);
         }
         // The last few nights, as proof: "Saturday 17.10 sold out within 11 minutes."
         if (recent && j.recent && j.recent.length && recent.hidden) {
@@ -75,7 +104,7 @@
             li.textContent = e.name + " sold out within " + span(e.minutes) + " of going on sale.";
             recent.appendChild(li);
           });
-          recent.hidden = !recent.children.length;
+          show(recent, recent.children.length > 0);
         }
       })
       .catch(function () {});
@@ -121,7 +150,7 @@
         rest = { x: screen.offsetLeft, y: screen.offsetTop, w: screen.offsetWidth, h: screen.offsetHeight, k: p.width / phone.offsetWidth,
           top: (parseFloat(getComputedStyle(stick).top) || 0) + (p.top - stick.getBoundingClientRect().top) };
       };
-      var draw = function () {
+      var paint = function () {   // not "draw": a var of that name replaced the Live line's draw() above
         queued = false;
         var vw = document.documentElement.clientWidth, vh = innerHeight, k = rest.k, p = phone.getBoundingClientRect();
         var t = Math.min(1, Math.max(0, (rest.top - grid.getBoundingClientRect().top) / (vh * 0.9)));
@@ -135,10 +164,10 @@
         stick.style.setProperty("--sh", lerp(rest.h, vh / k) + "px");
         stick.style.setProperty("--z", (1 - u).toFixed(3));
       };
-      var ask = function () { if (!queued) { queued = true; requestAnimationFrame(draw); } };
-      measure(); draw();
+      var ask = function () { if (!queued) { queued = true; requestAnimationFrame(paint); } };
+      measure(); paint();
       addEventListener("scroll", ask, { passive: true });
-      addEventListener("resize", function () { measure(); draw(); });
+      addEventListener("resize", function () { measure(); paint(); });
     }
   }
 
