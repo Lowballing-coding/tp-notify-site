@@ -84,7 +84,8 @@
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (j) {
         if (!j) return;
-        last = j.ok && j.last_check_at ? Date.parse(j.last_check_at) : null;
+        // The age comes from the server (last successful check), so a wrong clock on this device can't skew it.
+        last = j.checked_secs_ago != null ? Date.now() - j.checked_secs_ago * 1000 : null;
         draw();
         // The honest reason to pay: free alerts arrive 30 minutes late, and this many nights were gone by then.
         if (j.sold_out_events >= 5 && j.under_30 >= 2) {
@@ -112,7 +113,7 @@
   if (live && c.supabaseUrl) {
     load();
     setInterval(draw, 10000);
-    setInterval(load, 60000);
+    setInterval(load, 10000);   // the watcher checks FIXR every 10 seconds in the day, so ask as often
     document.addEventListener("visibilitychange", load);
   }
 
