@@ -25,6 +25,7 @@ The site sells Term Passes, Year Passes and a monthly plan to UK consumers. Chan
 - Big visible changes (such as home page animations) wait for Peter to review before going live.
 - Must look right on phones (light and dark mode via `data-theme="auto"`) and wide desktop screens.
 - Nothing should jump: content that appears after load uses `show(el, on)` in site.js, and form changes go through `window.tpFlip` (see `smooth()` in signup.js). Motion only runs with `html.motion` (reduced motion = still).
+- Glass look (Peter turned down a glossy, rainbow "liquid glass" as tacky): panels use the `--lg-*` tokens in tokens.css (night-tinted frosted fill, one hairline edge, soft shadow) over one calm violet `--wash` glow fixed behind the page. No gloss on buttons, no extra colour glows. The header is sticky, so `html` has `scroll-padding-top` and other sticky things (FAQ title, story phone) sit below it.
 - site.js is one big function: never reuse a `var` or function name in it. A `var draw` in the motion code once replaced the Live line's `draw()` and hid "Live: checked FIXR" on the home page.
 - The home page "Live: checked FIXR …" line uses `checked_secs_ago` from `public_status` (server-worked-out age of the last successful check) and refreshes every 10 seconds, the watcher's daytime pace. Don't go back to `last_check_at`: failed checks write it too.
 
