@@ -26,6 +26,7 @@ The site sells Term Passes, Year Passes and a monthly plan to UK consumers. Chan
 - Must look right on phones (light and dark mode via `data-theme="auto"`) and wide desktop screens.
 - Nothing should jump: content that appears after load uses `show(el, on)` in site.js, and form changes go through `window.tpFlip` (see `smooth()` in signup.js). Motion only runs with `html.motion` (reduced motion = still).
 - site.js is one big function: never reuse a `var` or function name in it. A `var draw` in the motion code once replaced the Live line's `draw()` and hid "Live: checked FIXR" on the home page.
+- The home page "Live: checked FIXR …" line uses `checked_secs_ago` from `public_status` (server-worked-out age of the last successful check) and refreshes every 10 seconds, the watcher's daytime pace. Don't go back to `last_check_at`: failed checks write it too.
 
 ## Checking a change
 
